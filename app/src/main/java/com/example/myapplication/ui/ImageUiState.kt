@@ -1,5 +1,6 @@
 package com.example.myapplication.ui
 
 data class ImageUiState (
-    val isValid: Boolean = false
+    val isWidthValid: Boolean = true,
+    val isHeightValid: Boolean = true,
 )
