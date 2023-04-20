@@ -9,7 +9,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -17,10 +16,11 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.*
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.*
+import com.example.myapplication.data.ImageType
+import com.example.myapplication.ui.ImageMainScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
-                    RandomImageScreen()
+                    ImageMainScreen()
                 }
             }
         }
@@ -66,50 +65,7 @@ fun RandomImageScreen() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Image size input
-            OutlinedTextField(
-                value = imageSize,
-                onValueChange = {
-                    if (it.matches(Regex("[1-9]\\d{0,2}"))) {
-                        imageSize = it
-                    }
-                },
-                label = { Text("Image size (1-999)") },
-                modifier = Modifier.fillMaxWidth()
-            )
 
-            // Image type selection
-            DropdownMenu(
-                expanded = false,
-                onDismissRequest = {},
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                imageTypes.forEach { type ->
-                    DropdownMenuItem(onClick = { imageType = type }) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector = type.image,
-                                contentDescription = type.label,
-                                tint = Color.Unspecified,
-                                modifier = Modifier.size(24.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(type.label)
-                        }
-                    }
-                }
-            }
-
-            // Show image button
-            Button(
-                onClick = {
-                    if (imageSize.isNotBlank()) {
-                        showImage = true
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text("Show Image")
-            }
 
             // Display image
             if (showImage) {
@@ -120,18 +76,5 @@ fun RandomImageScreen() {
                 )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
     }
 }
