@@ -1,5 +1,5 @@
 package com.example.myapplication.data
-val allType: Set<ImageType> =
+val ImgTypes: Set<ImageType> =
     setOf(
         ImageType("Man"),
         ImageType("Woman"),
