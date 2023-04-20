@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.myapplication.data.ImgTypes
 
 sealed class ImageType(val label: String)
 
