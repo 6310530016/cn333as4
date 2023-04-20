@@ -9,6 +9,6 @@ val ImgTypes: Set<ImageType> =
         ImageType("Devil"),
         ImageType("Angle"),
         ImageType("Shark"),
-        ImageType("Owส"),
+        ImageType("Owl"),
         ImageType("Snake"),
     )
